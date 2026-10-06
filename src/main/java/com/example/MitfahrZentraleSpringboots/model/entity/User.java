@@ -2,6 +2,7 @@ package com.example.MitfahrZentraleSpringboots.model.entity;
 
 import jakarta.persistence.*;
 
+//Speicherung des Users in der DB
 @Entity
 @Table(name = "users")
 public class User {
@@ -19,12 +20,16 @@ public class User {
     @Column(nullable = false, length = 50)
     private String role;
 
+    @Column(nullable = false)
+    private boolean active = true;
+
     public User() {}
 
-    public User(String username, String password, String role) {
+    public User(String username, String password, String role, boolean active) {
         this.username = username;
         this.password = password;
         this.role = role;
+        this.active = true;
     }
 
     public Long getId() { return id; }
@@ -38,4 +43,7 @@ public class User {
 
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
+
+    public boolean isActive() { return active; }
+    public void setActive(boolean active) { this.active = active; }
 }
